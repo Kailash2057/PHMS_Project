@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textViewAddress" type="id" />
+    <item name="textViewEmail" type="id" />
+    <item name="textViewPhone" type="id" />
+    <item name="textViewDOB" type="id" />
+    <item name="textViewGender" type="id" />
+    <item name="textViewLastName" type="id" />
+    <item name="textViewMiddleName" type="id" />
+    <item name="textViewFirstName" type="id" />
+</resources>

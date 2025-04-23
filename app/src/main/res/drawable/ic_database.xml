@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Database shape -->
+    <path
+        android:fillColor="@color/quartz"
+        android:pathData="M12,2C7.58,2 4,3.79 4,6v12c0,2.21 3.58,4 8,4s8,-1.79 8,-4V6c0,-2.21 -3.58,-4 -8,-4zM12,4c3.87,0 7,1.12 7,2s-3.13,2 -7,2 -7,-1.12 -7,-2 3.13,-2 7,-2zm0,16c-3.87,0 -7,-1.12 -7,-2v-1.5c1.59,0.94 4.08,1.5 7,1.5s5.41,-0.56 7,-1.5V18c0,0.88 -3.13,2 -7,2zm0,-4c-3.87,0 -7,-1.12 -7,-2v-1.5c1.59,0.94 4.08,1.5 7,1.5s5.41,-0.56 7,-1.5V14c0,0.88 -3.13,2 -7,2zm0,-4c-3.87,0 -7,-1.12 -7,-2V8.5c1.59,0.94 4.08,1.5 7,1.5s5.41,-0.56 7,-1.5V10c0,0.88 -3.13,2 -7,2z" />
+</vector>

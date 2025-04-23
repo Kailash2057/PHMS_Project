@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="  Search here..."
+            android:drawableLeft="@drawable/ic_search"
+            android:padding="12dp"
+            android:background="@drawable/edittext_background" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+
+            <ImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_user"
+                android:contentDescription="Profile Icon"
+                android:background="@drawable/circle_background" />
+
+            <TextView
+                android:id="@+id/textViewUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome! Username"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <GridLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/buttonMedications"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Medications"
+                android:drawableTop="@drawable/ic_medication"
+                android:drawablePadding="10dp"
+                android:textAlignment="center"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+            <Button
+                android:id="@+id/buttonVitalSigns"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Vital Signs"
+                android:drawableTop="@drawable/ic_heartbeat"
+                android:drawablePadding="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+            <Button
+                android:id="@+id/buttonYourData"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="My Data"
+                android:drawableTop="@drawable/ic_database"
+                android:drawablePadding="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+            <Button
+                android:id="@+id/buttonCommunication"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Communication"
+                android:drawableTop="@drawable/ic_chat"
+                android:drawablePadding="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+            <Button
+                android:id="@+id/buttonDiet"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Diet"
+                android:drawableTop="@drawable/ic_food"
+                android:drawablePadding="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+            <Button
+                android:id="@+id/buttonNotes"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Notes"
+                android:drawableTop="@drawable/ic_note"
+                android:drawablePadding="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/rounded_button_gray"/>
+
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>
