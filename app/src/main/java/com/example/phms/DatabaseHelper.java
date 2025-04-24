@@ -42,6 +42,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_NOTE_CREATED_AT = "created_at";
     private static final String COL_NOTE_UPDATED_AT = "updated_at";
 
+    // Your Doctor table columns
+    private static final String TABLE_DOCTORS = "doctors";
+
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -75,14 +79,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_NOTE_UPDATED_AT + " TEXT"
                 + ")";
 
+        String CREATE_DOCTORS_TABLE = "CREATE TABLE " + TABLE_DOCTORS + "("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name TEXT,"
+                + "email TEXT,"
+                + "phone TEXT"
+                + ")";
+
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_NOTES_TABLE);
+        db.execSQL(CREATE_DOCTORS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOCTORS);
         onCreate(db);
     }
 
@@ -309,5 +322,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("DatabaseHelper", "Note updated successfully: ID = " + noteId);
         }
         return rowsAffected > 0;
+    }
+    // ---------------- YOUR DOCTOR-related functions ---------------- //
+    public void addDoctor(Doctor doctor) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", doctor.getName());
+        values.put("email", doctor.getEmail());
+        values.put("phone", doctor.getPhone());
+        db.insert(TABLE_DOCTORS, null, values);
+        db.close();
+    }
+
+    public List<Doctor> getAllDoctors() {
+        List<Doctor> doctorList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_DOCTORS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Doctor doctor = new Doctor();
+                doctor.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
+                doctor.setName(cursor.getString(cursor.getColumnIndexOrThrow("name")));
+                doctor.setEmail(cursor.getString(cursor.getColumnIndexOrThrow("email")));
+                doctor.setPhone(cursor.getString(cursor.getColumnIndexOrThrow("phone")));
+                doctorList.add(doctor);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return doctorList;
+    }
+
+    public boolean updateDoctor(Doctor doctor) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", doctor.getName());
+        values.put("email", doctor.getEmail());
+        values.put("phone", doctor.getPhone());
+
+        int rows = db.update("doctors", values, "id=?", new String[]{String.valueOf(doctor.getId())});
+        return rows > 0;
     }
 }
