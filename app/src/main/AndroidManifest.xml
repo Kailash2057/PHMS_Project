@@ -45,7 +45,7 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".ActivityLogActivity"/>
         <activity android:name=".MedicationActivity"/>
-        <activity android:name="AddMedicationActivity"/>
+        <activity android:name=".AddMedicationActivity"/>
         <activity android:name=".ViewMedicationActivity"/>
         <activity android:name=".CommunicationActivity"/>
         <activity android:name=".AddContactActivity"/>
