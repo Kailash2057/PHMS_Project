@@ -12,22 +12,43 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:targetApi="31">
+
+        <activity
+            android:name=".HomePageActivity"
+            android:exported ="true"
+            android:label="@string/activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other activities -->
+        <activity android:name=".VitalSignActivity" android:exported="true" />
+        <activity android:name=".BloodPressureActivity" android:exported="true" />
+        <activity android:name=".GlucoseActivity" android:exported="true" />
+        <activity android:name=".CholesterolActivity" android:exported="true" />
+        <activity android:name=".DietActivity" android:exported="true" />
+        <activity android:name=".WeightActivity" android:exported="true" />
+        <activity android:name=".CalorieActivity" android:exported="true" />
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".HomePageActivity" />
         <activity android:name=".ForgotUsernameActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".NotesActivity" />
         <activity android:name=".NoteDetailActivity" />
         <activity android:name=".ViewNotesActivity" />
         <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".ActivityLogActivity"/>
+        <activity android:name=".ActivityLogActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
