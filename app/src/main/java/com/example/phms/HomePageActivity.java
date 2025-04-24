@@ -65,13 +65,18 @@ public class HomePageActivity extends AppCompatActivity {
             intent.putExtra("username", currentUsername);
             startActivity(intent);
         });
-        vitalSignsButton.setOnClickListener(v -> Toast.makeText(this, "Vital Signs clicked", Toast.LENGTH_SHORT).show());
+        
         communicationButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomePageActivity.this, CommunicationActivity.class);
             intent.putExtra("username", currentUsername);
             startActivity(intent);
         });
-        yourDataButton.setOnClickListener(v -> Toast.makeText(this, "Your Data clicked", Toast.LENGTH_SHORT).show());
+
+        yourDataButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePageActivity.this, MonitoringSystem.class);
+            intent.putExtra("username", currentUsername);
+            startActivity(intent);
+        });
 
         dietButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomePageActivity.this, DietActivity.class);
