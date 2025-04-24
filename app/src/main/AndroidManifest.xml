@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,6 +24,15 @@
         <activity android:name=".ViewNotesActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".ActivityLogActivity"/>
+        <activity android:name=".MedicationActivity"/>
+        <activity android:name="AddMedicationActivity"/>
+        <activity android:name=".ViewMedicationActivity"/>
+        <activity android:name=".CommunicationActivity"/>
+        <activity android:name=".AddContactActivity"/>
+        <activity android:name=".ViewContactActivity"/>
+
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"

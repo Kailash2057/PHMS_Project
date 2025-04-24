@@ -54,9 +54,17 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
         // Example: Set action on buttons (You can link these to new Activities later)
-        medicationsButton.setOnClickListener(v -> Toast.makeText(this, "Medications clicked", Toast.LENGTH_SHORT).show());
+        medicationsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePageActivity.this, MedicationActivity.class);
+            intent.putExtra("username", currentUsername);
+            startActivity(intent);
+        });
         vitalSignsButton.setOnClickListener(v -> Toast.makeText(this, "Vital Signs clicked", Toast.LENGTH_SHORT).show());
-        communicationButton.setOnClickListener(v -> Toast.makeText(this, "Communication clicked", Toast.LENGTH_SHORT).show());
+        communicationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePageActivity.this, CommunicationActivity.class);
+            intent.putExtra("username", currentUsername);
+            startActivity(intent);
+        });
         yourDataButton.setOnClickListener(v -> Toast.makeText(this, "Your Data clicked", Toast.LENGTH_SHORT).show());
         dietButton.setOnClickListener(v -> Toast.makeText(this, "Diet clicked", Toast.LENGTH_SHORT).show());
     }
