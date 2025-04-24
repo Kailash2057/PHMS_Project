@@ -8,13 +8,12 @@
         android:padding="24dp"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageViewProfile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:src="@drawable/ic_user"
             android:layout_marginBottom="16dp"
             android:contentDescription="Profile Picture"
@@ -95,24 +94,22 @@
         <Button
             android:id="@+id/buttonActivityLog"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:text="Login Activity"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_blue"
             android:textColor="#ffffff"
-            android:padding="12dp"
             android:textSize="16sp"
             android:elevation="4dp" />
 
         <Button
             android:id="@+id/buttonChangePassword"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="35dp"
             android:text="Change Password"
             android:background="@drawable/rounded_button_green"
             android:textColor="#ffffff"
-            android:padding="12dp"
             android:textSize="16sp"
             android:elevation="4dp"
             android:layout_marginBottom="20dp"/>
