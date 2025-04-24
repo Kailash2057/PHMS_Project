@@ -17,13 +17,13 @@
         android:textStyle="bold"
         android:textColor="@color/neon_red"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deleteBloodPressureBtn"
+        app:layout_constraintTop_toBottomOf="@id/deleteGlucoseLevelBtn"
         android:layout_marginTop="24dp" />
 
     <EditText
         android:id="@+id/glucoseLevelInput"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Enter Glucose Level"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
