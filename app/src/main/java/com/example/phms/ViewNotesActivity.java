@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +16,8 @@ import java.util.List;
 public class ViewNotesActivity extends AppCompatActivity {
 
     private EditText editTextSearch;
-    private Button buttonSearch;
+    private Button buttonClearSearch;
+    private ImageButton buttonSearch;
     private RecyclerView recyclerViewNotes;
     private NotesAdapter notesAdapter;
     private DatabaseHelper db;
@@ -30,6 +32,7 @@ public class ViewNotesActivity extends AppCompatActivity {
         editTextSearch = findViewById(R.id.editTextSearch);
         buttonSearch = findViewById(R.id.buttonSearch);
         recyclerViewNotes = findViewById(R.id.recyclerViewNotes);
+        buttonClearSearch = findViewById(R.id.buttonClearSearch);
 
         db = new DatabaseHelper(this);
         currentUsername = getIntent().getStringExtra("username");
@@ -38,6 +41,11 @@ public class ViewNotesActivity extends AppCompatActivity {
         noteList = db.getAllNotes(currentUsername);
         notesAdapter = new NotesAdapter(this, noteList);
         recyclerViewNotes.setAdapter(notesAdapter);
+
+        buttonClearSearch.setOnClickListener(v -> {
+            editTextSearch.setText(""); // Clear text
+            notesAdapter.updateNotes(noteList); // Reset to full list
+        });
 
         buttonSearch.setOnClickListener(v -> {
             String keyword = editTextSearch.getText().toString().trim();
