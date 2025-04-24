@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="15dp"
         android:gravity="center">
 
         <EditText
@@ -16,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name *"
-            android:padding="10dp"
+            android:paddingLeft="10sp"
             android:background="@drawable/edittext_background"
             android:layout_marginBottom="12dp" />
 
@@ -24,18 +23,18 @@
             android:id="@+id/editTextMiddleName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10sp"
             android:hint="Middle Name"
             android:background="@drawable/edittext_background"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/editTextLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10sp"
             android:hint="Last Name *"
             android:background="@drawable/edittext_background"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <LinearLayout
@@ -49,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender *"
+                android:paddingLeft="5sp"
                 android:textSize="16sp"
                 android:layout_marginEnd="16dp" />
 
@@ -80,30 +80,30 @@
             android:layout_height="wrap_content"
             android:hint="Date of Birth *"
             android:focusable="false"
+            android:paddingLeft="10sp"
             android:clickable="true"
             android:background="@drawable/edittext_background"
             android:inputType="none"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="10sp"
             android:hint="Phone Number *"
             android:background="@drawable/edittext_background"
             android:inputType="phone"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
+            android:paddingLeft="10sp"
             android:layout_height="wrap_content"
             android:hint="Email Address *"
             android:background="@drawable/edittext_background"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <EditText
@@ -111,8 +111,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Country *"
+            android:paddingLeft="10sp"
             android:background="@drawable/edittext_background"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <TextView
@@ -120,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="Security Question *"
             android:textSize="16sp"
+            android:paddingLeft="5sp"
             android:layout_marginBottom="12dp" />
 
         <Spinner
@@ -135,7 +136,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
             android:hint="Answer to Security Question *"
-            android:padding="10dp"
+            android:paddingLeft="10sp"
             android:layout_marginBottom="12dp" />
 
         <EditText
@@ -143,8 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username *"
+            android:paddingLeft="10sp"
             android:background="@drawable/edittext_background"
-            android:padding="10dp"
             android:layout_marginBottom="12dp" />
 
         <EditText
@@ -152,28 +153,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password *"
+            android:paddingLeft="10sp"
             android:background="@drawable/edittext_background"
             android:inputType="textPassword"
-            android:padding="10dp"
             android:layout_marginBottom="4dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password must include at least one A-Z, a-z, 0-9, and special character."
-            android:textSize="12sp"
+            android:textSize="13.5sp"
             android:textColor="#757575"
             android:layout_marginBottom="24dp" />
 
         <Button
             android:id="@+id/buttonRegister"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
             android:text="Register"
-            android:padding="10dp"
+            android:textSize="16sp"
             android:background="@drawable/rounded_button_green"
             android:textColor="@color/white"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="15dp" />
 
         <TextView
             android:id="@+id/textViewLogin"

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".GlucoseActivity">
+
+    <!-- Glucose Level -->
+    <TextView
+        android:id="@+id/glucoseLevelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Glucose Level"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/neon_red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deleteGlucoseLevelBtn"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/glucoseLevelInput"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Enter Glucose Level"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glucoseLevelLabel"
+        android:layout_marginTop="8dp" />
+
+    <!-- Register -->
+    <Button
+        android:id="@+id/registerGlucoseLevelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:backgroundTint="@color/emerald"
+        app:layout_constraintTop_toBottomOf="@id/glucoseLevelInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/updateGlucoseLevelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:backgroundTint="@color/emerald"
+        app:layout_constraintTop_toBottomOf="@id/registerGlucoseLevelBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/deleteGlucoseLevelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:backgroundTint="@color/emerald"
+        app:layout_constraintTop_toBottomOf="@id/updateGlucoseLevelBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
