@@ -1,41 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Outer LinearLayout: Contains (EditText + X) and Search button -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
         android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/editTextSearch"
+        <!-- Inner LinearLayout: EditText + Clear X Button -->
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:hint="Search by Title"
-            android:padding="10dp"
+            android:orientation="horizontal"
             android:background="@drawable/edittext_background"
-            android:textSize="16sp" />
+            android:padding="1dp"
+            android:gravity="center_vertical">
 
-        <Button
+            <EditText
+                android:id="@+id/editTextSearch"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:hint="Search by Title"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:paddingEnd="4dp" />
+
+            <Button
+                android:id="@+id/buttonClearSearch"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="X"
+                android:background="@android:color/transparent"
+                android:contentDescription="Clear Search"
+                android:paddingRight="5dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Search Button -->
+        <ImageButton
             android:id="@+id/buttonSearch"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:text="Search"
-            android:textSize="20sp"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_search_white"
+            android:textSize="16sp"
             android:background="@drawable/rounded_button_blue"
             android:textColor="@color/white"
             android:layout_marginStart="8dp" />
     </LinearLayout>
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotes"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>
