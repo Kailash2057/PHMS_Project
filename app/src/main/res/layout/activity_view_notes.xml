@@ -49,7 +49,7 @@
             android:id="@+id/buttonSearch"
             android:layout_width="45dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_search_white"
+            android:src="@drawable/ic_search"
             android:textSize="16sp"
             android:background="@drawable/rounded_button_blue"
             android:textColor="@color/white"

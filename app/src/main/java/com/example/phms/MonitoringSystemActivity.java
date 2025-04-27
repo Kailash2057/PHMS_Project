@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageButton;
 
 public class MonitoringSystemActivity extends AppCompatActivity {
 
-    private Button yourDoctorButton;
-    private Button checkMedicineButton;
+    private ImageButton yourDoctorButton;
+    private ImageButton checkMedicineButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monitoring_system);  // layout XML ファイルを読み込む
+        setContentView(R.layout.activity_monitoring_system);
 
         yourDoctorButton = findViewById(R.id.yourDoctorButton);
         checkMedicineButton = findViewById(R.id.checkMedicineButton);

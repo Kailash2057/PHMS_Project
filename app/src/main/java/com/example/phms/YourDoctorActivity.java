@@ -23,14 +23,12 @@ public class YourDoctorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_doctor);
 
-        doctorLayout = findViewById(R.id.doctor_layout);  // XMLにこのIDが必要！
+        doctorLayout = findViewById(R.id.doctor_layout);
 
         dbHelper = new DatabaseHelper(this);
 
-        // データベースから情報を取得
         List<Doctor> doctorList = dbHelper.getAllDoctors();
 
-        // 初期化：最大3人。無ければデフォルトで埋める
         for (int i = 0; i < 3; i++) {
             if (i < doctorList.size()) {
                 doctors[i] = doctorList.get(i);
@@ -49,44 +47,34 @@ public class YourDoctorActivity extends AppCompatActivity {
         for (int i = 0; i < doctors.length; i++) {
             Doctor doctor = doctors[i];
 
-            LinearLayout doctorItem = new LinearLayout(this);
-            doctorItem.setOrientation(LinearLayout.VERTICAL);
-            doctorItem.setPadding(20, 20, 20, 20);
+            // ここでXMLファイル (item_doctor.xml) を読み込む！
+            View doctorItem = getLayoutInflater().inflate(R.layout.item_doctor, doctorLayout, false);
 
-            TextView nameTextView = new TextView(this);
+            TextView nameTextView = doctorItem.findViewById(R.id.doctor_name);
+            TextView emailTextView = doctorItem.findViewById(R.id.doctor_email);
+            TextView phoneTextView = doctorItem.findViewById(R.id.doctor_phone);
+            Button editButton = doctorItem.findViewById(R.id.edit_button);
+            Button deleteButton = doctorItem.findViewById(R.id.delete_button);
+
             nameTextView.setText("Name: " + doctor.getName());
-
-            TextView emailTextView = new TextView(this);
             emailTextView.setText("Email: " + doctor.getEmail());
-
-            TextView phoneTextView = new TextView(this);
             phoneTextView.setText("Phone: " + doctor.getPhone());
 
-            Button editButton = new Button(this);
-            editButton.setText("Edit");
             int finalI = i;
             editButton.setOnClickListener(v -> editDoctorInfo(finalI));
-
-            Button deleteButton = new Button(this);
-            deleteButton.setText("Delete");
             deleteButton.setOnClickListener(v -> deleteDoctorInfo(finalI));
-
-            doctorItem.addView(nameTextView);
-            doctorItem.addView(emailTextView);
-            doctorItem.addView(phoneTextView);
-            doctorItem.addView(editButton);
-            doctorItem.addView(deleteButton);
 
             doctorLayout.addView(doctorItem);
         }
     }
+
 
     private void editDoctorInfo(int index) {
         Doctor doctor = doctors[index];
 
         EditDoctorDialog dialog = new EditDoctorDialog(this, doctor, updatedDoctor -> {
             doctors[index] = updatedDoctor;
-            dbHelper.updateDoctor(updatedDoctor);  // データベース更新
+            dbHelper.updateDoctor(updatedDoctor);
             displayDoctors();
         });
 
@@ -96,7 +84,7 @@ public class YourDoctorActivity extends AppCompatActivity {
     private void deleteDoctorInfo(int index) {
         Doctor defaultDoctor = new Doctor(index + 1, defaultInfo[0], defaultInfo[1], defaultInfo[2]);
         doctors[index] = defaultDoctor;
-        dbHelper.updateDoctor(defaultDoctor);  // デフォルトで上書き
+        dbHelper.updateDoctor(defaultDoctor);
         displayDoctors();
         Toast.makeText(this, "Doctor info reset to default", Toast.LENGTH_SHORT).show();
     }

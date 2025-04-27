@@ -25,7 +25,11 @@
 
     <Button
         android:id="@+id/save_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:text="save"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_button_green"
+        android:textColor="@color/white" />
 </LinearLayout>

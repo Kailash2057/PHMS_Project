@@ -95,7 +95,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:text="My Data"
+                android:text="Monitoring"
                 android:drawableTop="@drawable/ic_database"
                 android:drawablePadding="10dp"
                 android:paddingTop="25dp"

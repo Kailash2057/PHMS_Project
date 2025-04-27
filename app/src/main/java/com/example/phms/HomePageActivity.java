@@ -73,7 +73,7 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
         yourDataButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePageActivity.this, MonitoringSystem.class);
+            Intent intent = new Intent(HomePageActivity.this, MonitoringSystemActivity.class);
             intent.putExtra("username", currentUsername);
             startActivity(intent);
         });
