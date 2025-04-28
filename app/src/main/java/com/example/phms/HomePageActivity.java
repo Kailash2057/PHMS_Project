@@ -56,6 +56,7 @@ public class HomePageActivity extends AppCompatActivity {
         vitalSignsButton.setOnClickListener(v -> {
             // Create an Intent to go to VitalSignActivity
             Intent intent = new Intent(HomePageActivity.this, VitalSignActivity.class);
+            intent.putExtra("username", currentUsername); 
             startActivity(intent);  // Start the activity
         });
 
@@ -80,6 +81,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         dietButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomePageActivity.this, DietActivity.class);
+            intent.putExtra("username", currentUsername); 
             startActivity(intent);  // Start the activity
         });
     }
