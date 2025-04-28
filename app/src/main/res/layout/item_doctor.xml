@@ -37,26 +37,40 @@
 
         <Button
             android:id="@+id/edit_button"
-            android:layout_width="140dp"
+            android:layout_width="120dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:text="Edit"
             android:textSize="16sp"
             android:background="@drawable/rounded_button_blue"
-        android:textColor="@color/white" />
+            android:textColor="@color/white" />
 
         <Space
-            android:layout_width="16dp"
+            android:layout_width="8dp"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/delete_button"
-            android:layout_width="140dp"
+            android:layout_width="120dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:text="Delete"
             android:textSize="16sp"
             android:background="@drawable/rounded_button_red"
-        android:textColor="@color/white" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/consult_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@null"
+            android:src="@drawable/ic_email"
+            android:contentDescription="Consult"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

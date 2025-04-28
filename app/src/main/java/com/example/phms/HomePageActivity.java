@@ -14,7 +14,7 @@ public class HomePageActivity extends AppCompatActivity {
     Button medicationsButton, vitalSignsButton, communicationButton, yourDataButton, dietButton, notesButton;
 
     DatabaseHelper db;
-    String currentUsername; // To store username passed from Login
+    String currentUsername = "test_user"; // To store username passed from Login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class HomePageActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         // Get current username from intent
-        currentUsername = getIntent().getStringExtra("username");
-        usernameDisplay.setText(currentUsername);
+        //currentUsername = getIntent().getStringExtra("username");
+        //usernameDisplay.setText(currentUsername);
 
         profileIcon.setOnClickListener(new View.OnClickListener() {
             @Override

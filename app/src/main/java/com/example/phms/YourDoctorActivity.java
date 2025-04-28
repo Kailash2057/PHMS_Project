@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.Intent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+import android.widget.ImageButton;
 
 public class YourDoctorActivity extends AppCompatActivity {
 
@@ -34,7 +37,7 @@ public class YourDoctorActivity extends AppCompatActivity {
                 doctors[i] = doctorList.get(i);
             } else {
                 doctors[i] = new Doctor(i + 1, defaultInfo[0], defaultInfo[1], defaultInfo[2]);
-                dbHelper.addDoctor(doctors[i]);  // デフォルト登録しておく
+                dbHelper.addDoctor(doctors[i]);
             }
         }
 
@@ -49,12 +52,12 @@ public class YourDoctorActivity extends AppCompatActivity {
 
             // ここでXMLファイル (item_doctor.xml) を読み込む！
             View doctorItem = getLayoutInflater().inflate(R.layout.item_doctor, doctorLayout, false);
-
             TextView nameTextView = doctorItem.findViewById(R.id.doctor_name);
             TextView emailTextView = doctorItem.findViewById(R.id.doctor_email);
             TextView phoneTextView = doctorItem.findViewById(R.id.doctor_phone);
             Button editButton = doctorItem.findViewById(R.id.edit_button);
             Button deleteButton = doctorItem.findViewById(R.id.delete_button);
+            ImageButton consultButton = doctorItem.findViewById(R.id.consult_button);
 
             nameTextView.setText("Name: " + doctor.getName());
             emailTextView.setText("Email: " + doctor.getEmail());
@@ -63,6 +66,19 @@ public class YourDoctorActivity extends AppCompatActivity {
             int finalI = i;
             editButton.setOnClickListener(v -> editDoctorInfo(finalI));
             deleteButton.setOnClickListener(v -> deleteDoctorInfo(finalI));
+
+            if (!doctor.getEmail().equals("N/A")) {
+                consultButton.setVisibility(View.VISIBLE);
+                consultButton.setOnClickListener(v -> {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("message/rfc822");
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{doctor.getEmail()});
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Consultation Request");
+                    startActivity(Intent.createChooser(intent, "Send Email"));
+                });
+            } else {
+                consultButton.setVisibility(View.GONE);
+            }
 
             doctorLayout.addView(doctorItem);
         }

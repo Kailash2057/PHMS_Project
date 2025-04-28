@@ -188,6 +188,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return update > 0;
     }
 
+    //Fetch the email address based on the username
+    public String getUserEmail(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COL_EMAIL + " FROM " + TABLE_USER +
+                " WHERE " + COL_USERNAME + " = ?", new String[]{username});
+
+        String email = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex(COL_EMAIL);
+            if (columnIndex != -1 && !cursor.isNull(columnIndex)) {
+                email = cursor.getString(columnIndex);
+            }
+            cursor.close();
+        }
+        return email;
+    }
+
     // Fetch the security question based on the username
     public String getSecurityQuestion(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -332,6 +349,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("phone", doctor.getPhone());
         db.insert(TABLE_DOCTORS, null, values);
         db.close();
+    }
+
+    public List<Doctor> getValidDoctors() {
+        List<Doctor> allDoctors = getAllDoctors();
+        List<Doctor> validDoctors = new ArrayList<>();
+        for (Doctor doctor : allDoctors) {
+            if (!doctor.getEmail().equals("N/A")) {
+                validDoctors.add(doctor);
+            }
+        }
+        return validDoctors;
     }
 
     public List<Doctor> getAllDoctors() {
