@@ -13,6 +13,7 @@ public class HomePageActivity extends AppCompatActivity {
     EditText searchBar;
     Button medicationsButton, vitalSignsButton, communicationButton, yourDataButton, dietButton, notesButton;
 
+    String currentUsername;    // Declare currentUsername as a String variable
     DatabaseHelper db;
 
     @Override
