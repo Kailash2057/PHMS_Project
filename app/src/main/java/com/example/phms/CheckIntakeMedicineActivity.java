@@ -130,7 +130,6 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
 
                     for (Integer takenMedId : intakeStatus.keySet()) {
                         if (intakeStatus.getOrDefault(takenMedId, false)) {
-                            // すでに摂取済みの薬の名前
                             String takenMedName = "";
                             for (Medication m : medications) {
                                 if (m.getId() == takenMedId) {
@@ -183,7 +182,6 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
     }
 
     private void scheduleIntakeCheck(Medication med) {
-        // intakeTimeを時間に変換
         try {
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
             Date now = new Date();
@@ -200,7 +198,6 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
 
             long delay = intakeCalendar.getTimeInMillis() - calendar.getTimeInMillis();
             if (delay < 0) {
-                // すでに時間を過ぎていたら即チェック
                 delay = 0;
             }
 
@@ -216,7 +213,6 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
     }
 
     private void sendMissedIntakeEmail(Medication med) {
-        // 仮想的にEmail送信
         String userEmail = dbHelper.getUserEmail(username);
 
         String subject = "Missed Medication Intake Notification";
@@ -255,17 +251,13 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
         }
     }
 
-    // ここで前日の intakeStatus をリセットしてボタンを再度有効にする
     private void checkAndResetIntakeStatus() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String today = sdf.format(new Date());
 
-        // 例えば、intakeStatus をデータベースまたは保存された情報を基にリセット
-        // intakeStatus のキーに対して、今日の日付でボタンを再度有効にする処理を追加
         for (Map.Entry<Integer, Boolean> entry : intakeStatus.entrySet()) {
             if (entry.getValue() == true) {
-                // intake が完了していれば、次の日になったときに再度ボタンを有効にする
-                intakeStatus.put(entry.getKey(), false); // 状態をリセット
+                intakeStatus.put(entry.getKey(), false);
             }
         }
     }
@@ -273,12 +265,16 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
     private void initializeDangerousCombinations() {
         dangerousCombinations = new HashMap<>();
 
-        // AとBは危険な組み合わせ
-        dangerousCombinations.put("A", Arrays.asList("B"));
-        dangerousCombinations.put("B", Arrays.asList("A"));
+        dangerousCombinations.put("Warfarin", Arrays.asList("NSAIDs"));
+        dangerousCombinations.put("NSAIDs", Arrays.asList("Warfarin"));
 
-        // CとDも危険な組み合わせ
-        dangerousCombinations.put("C", Arrays.asList("D"));
-        dangerousCombinations.put("D", Arrays.asList("C"));
+        dangerousCombinations.put("ACE Inhibitors", Arrays.asList("Potassium Supplements"));
+        dangerousCombinations.put("Potassium Supplements", Arrays.asList("ACE Inhibitors"));
+
+        dangerousCombinations.put("Benzodiazepines", Arrays.asList("Opioids"));
+        dangerousCombinations.put("Opioids", Arrays.asList("Benzodiazepines"));
+
+        dangerousCombinations.put("SSRIs", Arrays.asList("MAO Inhibitors"));
+        dangerousCombinations.put("MAO Inhibitors", Arrays.asList("SSRIs"));
     }
 }

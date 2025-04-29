@@ -15,6 +15,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     String currentUsername;    // Declare currentUsername as a String variable
     DatabaseHelper db;
+    String currentUsername; // To store username passed from Login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
