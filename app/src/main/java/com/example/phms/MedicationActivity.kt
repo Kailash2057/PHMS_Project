@@ -3,6 +3,7 @@ package com.example.phms;
 import android.os.Bundle
 import android.widget.*
 import android.content.*
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.*
@@ -13,10 +14,12 @@ public class MedicationActivity : AppCompatActivity(){
     private lateinit var username: String
     private lateinit var medicationList: MutableList<Medication>
     private lateinit var adapter: MedicationAdapter
+    private lateinit var textNoResults: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medication)
+        textNoResults = findViewById(R.id.textNoResults)
 
         username = intent.getStringExtra("username") ?: ""
         if(username.isEmpty()){
@@ -66,6 +69,12 @@ public class MedicationActivity : AppCompatActivity(){
     private fun filterList(query:String){
         val filteredList = medicationList.filter{ it.name.contains(query, ignoreCase = true)}
         adapter.setData(filteredList)
+
+        if (filteredList.isEmpty()) {
+            textNoResults.visibility = View.VISIBLE
+        } else {
+            textNoResults.visibility = View.GONE
+        }
     }
 
 }

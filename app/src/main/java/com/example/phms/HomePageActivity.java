@@ -54,9 +54,9 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
         vitalSignsButton.setOnClickListener(v -> {
-            // Create an Intent to go to VitalSignActivity
             Intent intent = new Intent(HomePageActivity.this, VitalSignActivity.class);
-            startActivity(intent);  // Start the activity
+            intent.putExtra("username", currentUsername);
+            startActivity(intent);
         });
 
         medicationsButton.setOnClickListener(v -> {

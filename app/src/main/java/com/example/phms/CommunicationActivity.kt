@@ -1,11 +1,11 @@
 package com.example.phms;
 
-import android.app.AlertDialog
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,6 +16,7 @@ class CommunicationActivity : AppCompatActivity() {
     private lateinit var contactList: MutableList<Contact>
     private lateinit var adapter: ContactAdapter
     private lateinit var username: String
+    private lateinit var textNoResults: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class CommunicationActivity : AppCompatActivity() {
         }
 
         val searchView = findViewById<SearchView>(R.id.searchContacts)
+        textNoResults = findViewById(R.id.textNoResults)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -73,5 +75,11 @@ class CommunicationActivity : AppCompatActivity() {
             it.name.contains(query, ignoreCase = true)
         }
         adapter.updateData(filteredList)
+
+        if (filteredList.isEmpty()) {
+            textNoResults.visibility = View.VISIBLE
+        } else {
+            textNoResults.visibility = View.GONE
+        }
     }
 }

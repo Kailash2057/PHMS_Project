@@ -10,14 +10,14 @@
         android:id="@+id/typeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="25sp"
         android:layout_marginTop="8dp" />
 
     <TextView
@@ -26,8 +26,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginTop="8dp" />
-
-    <!-- Editable Fields (Initially hidden) -->
     <EditText
         android:id="@+id/typeEditText"
         android:layout_width="match_parent"
@@ -66,7 +64,7 @@
         <Button
             android:id="@+id/editButton"
             android:layout_width="135dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="Edit Note"
             android:background="@drawable/rounded_button_green"
@@ -87,8 +85,8 @@
 
     <Button
         android:id="@+id/deleteButton"
-        android:layout_width="135dp"
-        android:layout_height="35dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:textSize="16sp"
         android:text="Delete Note"
         android:layout_gravity="center"

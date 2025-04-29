@@ -41,8 +41,8 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:text="Login"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -51,8 +51,8 @@
 
         <Button
             android:id="@+id/buttonRegister"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="SIGN UP"
             android:background="@drawable/rounded_button_blue"

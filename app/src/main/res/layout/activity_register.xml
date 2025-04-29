@@ -169,7 +169,7 @@
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="110dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:text="Register"
             android:textSize="16sp"
             android:background="@drawable/rounded_button_green"

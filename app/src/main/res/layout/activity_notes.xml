@@ -44,9 +44,9 @@
 
     <Button
         android:id="@+id/buttonCreateNote"
-        android:layout_width="170dp"
+        android:layout_width="200dp"
         android:layout_gravity="center"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:textSize="16sp"
         android:text="Create New Note"
         android:background="@drawable/rounded_button_green"
@@ -55,9 +55,9 @@
 
     <Button
         android:id="@+id/buttonViewNotes"
-        android:layout_width="170dp"
+        android:layout_width="200dp"
         android:layout_gravity="center"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button_blue"
