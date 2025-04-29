@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/doctor_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#EEEEEE"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/doctor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: "
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/doctor_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/doctor_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone: "
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:text="Edit"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_button_blue"
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:text="Delete"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_button_red"
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/consult_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@null"
+            android:src="@drawable/ic_email"
+            android:contentDescription="Consult"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

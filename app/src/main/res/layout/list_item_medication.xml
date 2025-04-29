@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/medication_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="12dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp">
 
     <TextView
-        android:id="@+id/textViewMedicationDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000000" />
-
-    <ImageView
-        android:id="@+id/imageViewOptions"
+        android:id="@+id/medication_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_more"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:contentDescription="Options menu" />
-</RelativeLayout>
+        android:text="Medicine"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/medication_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/medication_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intake Time"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/intake_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Intake"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

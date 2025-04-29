@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monitoring System"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/yourDoctorButton"
+                android:layout_width="167dp"
+                android:layout_height="183dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/your_doctor"
+                android:src="@drawable/doctor_logo2"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Doctor"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="32dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/checkMedicineButton"
+                android:layout_width="145dp"
+                android:layout_height="166dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/check_medicine"
+                android:scaleType="fitCenter"
+                android:src="@drawable/medicine_icon2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Intake Medicines"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
