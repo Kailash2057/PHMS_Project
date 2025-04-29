@@ -2,4 +2,6 @@
     <string name="app_name">PHMS</string>
     <string name="title_activity_glucose">GlucoseActivity</string>
     <string name="activity_home_page">Home Page</string>
+    <string name="check_medicine">Check Medicine</string>
+    <string name="your_doctor">Your Doctor</string>
 </resources>
