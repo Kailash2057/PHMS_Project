@@ -110,7 +110,7 @@ public class CheckIntakeMedicineActivity extends AppCompatActivity {
 
         for (Medication med : medications) {
             if (isWithinDateRange(today, med.getStartDate(), med.getEndDate())) {
-                View medItem = getLayoutInflater().inflate(R.layout.item_medication, medicationLayout, false);
+                View medItem = getLayoutInflater().inflate(R.layout.list_item_medication, medicationLayout, false);
 
                 TextView nameTextView = medItem.findViewById(R.id.medication_name);
                 TextView dateTextView = medItem.findViewById(R.id.medication_date);
