@@ -50,6 +50,9 @@
         <activity android:name=".CommunicationActivity"/>
         <activity android:name=".AddContactActivity"/>
         <activity android:name=".ViewContactActivity"/>
+        <activity android:name=".MonitoringSystemActivity"/>
+        <activity android:name=".CheckIntakeMedicineActivity"/>
+        <activity android:name=".YourDoctorActivity"/>
 
         <receiver android:name=".ReminderActivity" android:exported="false" />
 
