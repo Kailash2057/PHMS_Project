@@ -35,7 +35,6 @@ class ViewContactActivity : AppCompatActivity() {
         val btnEmail = findViewById<Button>(R.id.btnEmail)
         val btnText = findViewById<Button>(R.id.btnText)
         val btnEdit = findViewById<Button>(R.id.btnEditContact)
-        val btnDelete = findViewById<Button>(R.id.btnDeleteContact)
 
         contact = db.getContactById(contactId) ?: run {
             Toast.makeText(this, "Contact not found", Toast.LENGTH_SHORT).show()
@@ -51,6 +50,7 @@ class ViewContactActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${contact.phone}"))
             startActivity(intent)
         }
+
 
         btnEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
@@ -71,33 +71,12 @@ class ViewContactActivity : AppCompatActivity() {
             val intent = Intent(this, AddContactActivity::class.java).apply {
                 putExtra("contactId", contact.id)
                 putExtra("username", username)
+                putExtra("name", contact.name)
+                putExtra("email", contact.email)
+                putExtra("phone", contact.phone)
+                putExtra("relation", contact.relation)
             }
             startActivity(intent)
-        }
-
-        btnDelete.setOnClickListener {
-            AlertDialog.Builder(this).apply {
-                setTitle("Delete ${contact.name}?")
-                setMessage("Are you sure you want to delete this contact?")
-                setPositiveButton("Yes") { _, _ ->
-                    if (db.deleteContact(contact.id, username)) {
-                        Toast.makeText(
-                            this@ViewContactActivity,
-                            "Deleted successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        finish()
-                    } else {
-                        Toast.makeText(
-                            this@ViewContactActivity,
-                            "Deletion failed",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-                setNegativeButton("Cancel", null)
-                show()
-            }
         }
     }
     override fun onResume() {

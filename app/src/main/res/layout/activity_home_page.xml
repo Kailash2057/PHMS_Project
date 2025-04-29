@@ -57,6 +57,7 @@
 
             <Button
                 android:id="@+id/buttonMedications"
+                style="@style/HomePageButton"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"
@@ -73,6 +74,7 @@
 
             <Button
                 android:id="@+id/buttonVitalSigns"
+                style="@style/HomePageButton"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"
@@ -89,6 +91,7 @@
 
             <Button
                 android:id="@+id/buttonYourData"
+                style="@style/HomePageButton"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"
@@ -104,6 +107,8 @@
 
             <Button
                 android:id="@+id/buttonCommunication"
+                style="@style/HomePageButton"
+
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"
@@ -112,12 +117,12 @@
                 android:text="Communication"
                 android:drawableTop="@drawable/ic_chat"
                 android:drawablePadding="10dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="15dp"
+                android:paddingTop="20dp"
                 android:background="@drawable/rounded_button_gray"/>
 
             <Button
                 android:id="@+id/buttonDiet"
+                style="@style/HomePageButton"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"
@@ -133,6 +138,7 @@
 
             <Button
                 android:id="@+id/buttonNotes"
+                style="@style/HomePageButton"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_marginTop="12dp"

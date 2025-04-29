@@ -2,28 +2,32 @@ package com.example.phms
 
 import android.app.*
 import android.content.*
+import android.content.pm.PackageManager
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 
 class ReminderActivity : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val medName = intent.getStringExtra("medName") ?: return
+        val medName = intent.getStringExtra("medName") ?: "Medication"
 
-        val channelId = "medication_reminder"
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, "Reminders", NotificationManager.IMPORTANCE_HIGH)
-            (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(channel)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                return
+            }
         }
 
-        val notification = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle("Take your medication")
-            .setContentText("It's time to take $medName")
+        val builder = NotificationCompat.Builder(context, "medication_channel")
+            .setSmallIcon(R.drawable.ic_medication)
+            .setContentTitle("Medication Reminder")
+            .setContentText("Time to take $medName!")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
-            .build()
 
-        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.notify(medName.hashCode(), notification)
+        val notificationManager = NotificationManagerCompat.from(context)
+        notificationManager.notify(medName.hashCode(), builder.build())
     }
 }

@@ -13,6 +13,7 @@ class ContactDbHelper(context: Context) :
                 name TEXT,
                 email TEXT,
                 phone TEXT,
+                relation TEXT,
                 username TEXT,
                 UNIQUE(email, username)
             )
@@ -29,6 +30,7 @@ class ContactDbHelper(context: Context) :
             put("name", c.name)
             put("email", c.email)
             put("phone", c.phone)
+            put("relation", c.relation)
             put("username", c.username)
         }
         return writableDatabase.insert("contacts", null, values) != -1L
@@ -39,6 +41,7 @@ class ContactDbHelper(context: Context) :
             put("name", c.name)
             put("email", c.email)
             put("phone", c.phone)
+            put("relation", c.relation)
         }
         return writableDatabase.update(
             "contacts", values,
@@ -63,7 +66,8 @@ class ContactDbHelper(context: Context) :
                 name = cursor.getString(1),
                 email = cursor.getString(2),
                 phone = cursor.getString(3),
-                username = cursor.getString(4)
+                relation = cursor.getString(4),
+                username = cursor.getString(5)
             ))
         }
         cursor.close()
@@ -77,7 +81,8 @@ class ContactDbHelper(context: Context) :
                 name = cursor.getString(1),
                 email = cursor.getString(2),
                 phone = cursor.getString(3),
-                username = cursor.getString(4)
+                relation = cursor.getString(4),
+                username = cursor.getString(5)
             )
             cursor.close()
             contact

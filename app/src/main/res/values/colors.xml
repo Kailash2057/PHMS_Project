@@ -13,9 +13,11 @@
     <color name="smoke">#71797E</color>
     <color name="dark_orange">#8B4000</color>
     <color name="emerald">#50C878</color>
+    <color name="myButton">#50C878</color>
+    <color name="myBackgroundTint">#DBF3C9</color>
     <color name="quartz">#51414F</color>
     <color name="blue">#0096FF</color>
-    <color name="colorPrimary">#6200EE</color> <!-- Default Primary Color -->
+    <color name="colorPrimary">#50C878</color>
     <color name="colorPrimaryDark">#3700B3</color> <!-- Darker Shade of Primary Color -->
     <color name="colorAccent">#03DAC5</color> <!-- Accent Color -->
 </resources>

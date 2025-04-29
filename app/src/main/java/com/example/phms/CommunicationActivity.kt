@@ -6,14 +6,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CommunicationActivity : AppCompatActivity() {
 
     private lateinit var db: ContactDbHelper
     private lateinit var contactList: MutableList<Contact>
-    private lateinit var adapter: ArrayAdapter<String>
+    private lateinit var adapter: ContactAdapter
     private lateinit var username: String
-    private val displayList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,21 +28,29 @@ class CommunicationActivity : AppCompatActivity() {
             return
         }
 
+        val searchView = findViewById<SearchView>(R.id.searchContacts)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterContacts(newText ?: "")
+                return true
+            }
+        })
+
         db = ContactDbHelper(this)
-        val listView = findViewById<ListView>(R.id.lvContacts)
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, displayList)
-        listView.adapter = adapter
 
-        listView.setOnItemClickListener { parent, view, position, _ ->
-            val contact = contactList[position]
+        val recyclerView = findViewById<RecyclerView>(R.id.viewContacts)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        contactList = mutableListOf()
 
-            val intent = Intent(this, ViewContactActivity::class.java)
-            intent.putExtra("contactId", contact.id)
-            intent.putExtra("username", username)
-            startActivity(intent)
-        }
+        adapter = ContactAdapter(this, contactList, username, db)
+        recyclerView.adapter = adapter
 
-        findViewById<Button>(R.id.btnAddContact).setOnClickListener {
+        findViewById<FloatingActionButton>(R.id.btnAddContacts).setOnClickListener {
             val intent = Intent(this, AddContactActivity::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
@@ -54,8 +64,14 @@ class CommunicationActivity : AppCompatActivity() {
 
     private fun refreshList() {
         contactList = db.getAllContacts(username).toMutableList()
-        displayList.clear()
-        displayList.addAll(contactList.map { it.name })
-        adapter.notifyDataSetChanged()
+        contactList.sortBy{it.name}
+        adapter.updateData(contactList)
+    }
+
+    private fun filterContacts(query: String) {
+        val filteredList = contactList.filter {
+            it.name.contains(query, ignoreCase = true)
+        }
+        adapter.updateData(filteredList)
     }
 }

@@ -1,33 +1,36 @@
 package com.example.phms
 
-import android.app.AlarmManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.*
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.util.Calendar
+import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class AddMedicationActivity : AppCompatActivity() {
 
     private lateinit var db: MedicationDbHelper
     private lateinit var username: String
-    private var medicationId: Int? = null // null means new medication
+    private var medicationId: Int? = null
+
+    private lateinit var editTextStart: TextInputEditText
+    private lateinit var editTextEnd: TextInputEditText
+    private lateinit var editTextTime: TextInputEditText
+    private lateinit var editTextFrequency: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
-
-                requestPermissions(
-                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
-                    101
-                )
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
             }
         }
 
@@ -39,12 +42,16 @@ class AddMedicationActivity : AppCompatActivity() {
 
         val editTextName = findViewById<EditText>(R.id.medName)
         val editTextDosage = findViewById<EditText>(R.id.medDosage)
-        val editTextFrequency = findViewById<EditText>(R.id.medFrequency)
-        val editTextStart = findViewById<EditText>(R.id.medStartDate)
-        val editTextEnd = findViewById<EditText>(R.id.medEndDate)
-        val editTextTime = findViewById<EditText>(R.id.medTime)
+        editTextFrequency = findViewById(R.id.medFrequency)
+        editTextStart = findViewById(R.id.medStartDate)
+        editTextEnd = findViewById(R.id.medEndDate)
+        editTextTime = findViewById(R.id.medTime)
         val checkBoxReminder = findViewById<CheckBox>(R.id.reminder)
         val submitButton = findViewById<Button>(R.id.btnSaveMedication)
+
+        editTextStart.setOnClickListener { showDatePickerDialog(editTextStart) }
+        editTextEnd.setOnClickListener { showDatePickerDialog(editTextEnd) }
+        editTextTime.setOnClickListener { showTimePickerDialog(editTextTime) }
 
         if (medicationId != null) {
             medicationId?.let { id ->
@@ -68,7 +75,9 @@ class AddMedicationActivity : AppCompatActivity() {
             val time = editTextTime.text.toString().trim()
             val reminder = checkBoxReminder.isChecked
 
-            if (name.isEmpty() || dosage.isEmpty() || frequency.isEmpty() || start.isEmpty() || end.isEmpty() || time.isEmpty()) {
+            if (name.isEmpty() || dosage.isEmpty() || frequency.isEmpty() ||
+                start.isEmpty() || end.isEmpty() || time.isEmpty()
+            ) {
                 Toast.makeText(this, "All fields required", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -91,6 +100,32 @@ class AddMedicationActivity : AppCompatActivity() {
         }
     }
 
+    private fun showDatePickerDialog(targetEditText: TextInputEditText) {
+        val calendar = Calendar.getInstance()
+        DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                val formatted = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
+                targetEditText.setText(formatted)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
+    private fun showTimePickerDialog(targetEditText: TextInputEditText) {
+        val calendar = Calendar.getInstance()
+        TimePickerDialog(
+            this,
+            { _, hourOfDay, minute ->
+                val formatted = String.format("%02d:%02d", hourOfDay, minute)
+                targetEditText.setText(formatted)
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        ).show()
+    }
+
     private fun scheduleReminder(med: Medication) {
         val intent = Intent(this, ReminderActivity::class.java).apply {
             putExtra("medName", med.name)
@@ -105,7 +140,10 @@ class AddMedicationActivity : AppCompatActivity() {
         }
 
         val pendingIntent = PendingIntent.getBroadcast(
-            this, med.name.hashCode(), intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            this,
+            med.name.hashCode(),
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager

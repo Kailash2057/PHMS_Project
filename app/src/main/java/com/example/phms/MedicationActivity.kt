@@ -3,15 +3,16 @@ package com.example.phms;
 import android.os.Bundle
 import android.widget.*
 import android.content.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 public class MedicationActivity : AppCompatActivity(){
     private lateinit var db: MedicationDbHelper
     private lateinit var username: String
     private lateinit var medicationList: MutableList<Medication>
-    private lateinit var adapter: ArrayAdapter<String>
-    private val displayList = mutableListOf<String>()
+    private lateinit var adapter: MedicationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,20 +24,29 @@ public class MedicationActivity : AppCompatActivity(){
             finish()
             return
         }
+
         db = MedicationDbHelper(this)
-        val listView = findViewById<ListView>(R.id.lvMedications)
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, displayList)
-        listView.adapter = adapter
+        val recyclerView = findViewById<RecyclerView>(R.id.viewMedications)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = MedicationAdapter(this)
+        recyclerView.adapter = adapter
+        refreshList()
 
-        listView.setOnItemClickListener { _, _, i, _ ->
-            val med = medicationList[i]
-            val intent = Intent(this, ViewMedicationActivity::class.java)
-            intent.putExtra("medicationId", med.id)
-            intent.putExtra("username", username)
-            startActivity(intent)
-        }
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setIconifiedByDefault(false)
 
-        findViewById<Button>(R.id.btnAddMedication).setOnClickListener {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText.orEmpty())
+                return true
+            }
+        })
+
+        findViewById<FloatingActionButton>(R.id.btnAddMedications).setOnClickListener {
             val intent = Intent(this, AddMedicationActivity::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
@@ -50,13 +60,12 @@ public class MedicationActivity : AppCompatActivity(){
 
     private fun refreshList() {
         medicationList = db.getAllMedications(username).toMutableList()
-        displayList.clear()
-        displayList.addAll(
-            medicationList.map {
-                "${it.name}\nDosage: ${it.dosage}\nIntake Time: ${it.intakeTime}"
-            }
-        )
-        adapter.notifyDataSetChanged()
+        adapter.setData(medicationList)
+    }
+
+    private fun filterList(query:String){
+        val filteredList = medicationList.filter{ it.name.contains(query, ignoreCase = true)}
+        adapter.setData(filteredList)
     }
 
 }

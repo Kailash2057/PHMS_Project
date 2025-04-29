@@ -59,7 +59,6 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(intent);  // Start the activity
         });
 
-        // Example: Set action on buttons (You can link these to new Activities later)
         medicationsButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomePageActivity.this, MedicationActivity.class);
             intent.putExtra("username", currentUsername);

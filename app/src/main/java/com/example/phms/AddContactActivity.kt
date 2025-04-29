@@ -8,7 +8,7 @@ class AddContactActivity : AppCompatActivity() {
 
     private lateinit var db: ContactDbHelper
     private lateinit var username: String
-    private var contactId = -1 // -1 means new contact
+    private var contactId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +17,8 @@ class AddContactActivity : AppCompatActivity() {
         val editTextName = findViewById<EditText>(R.id.contactName)
         val editTextEmail = findViewById<EditText>(R.id.contactEmail)
         val editTextPhone = findViewById<EditText>(R.id.contactPhone)
+        val editTextRelation = findViewById<EditText>(R.id.contactRelation)
         val btnSave = findViewById<Button>(R.id.btnSaveContact)
-        val btnCancel = findViewById<Button>(R.id.btnCancelContact)
-
 
         username = intent.getStringExtra("username") ?: ""
         if (username.isEmpty()) {
@@ -37,6 +36,7 @@ class AddContactActivity : AppCompatActivity() {
                 editTextName.setText(it.name)
                 editTextEmail.setText(it.email)
                 editTextPhone.setText(it.phone)
+                editTextRelation.setText(it.relation)
             }
         }
 
@@ -44,6 +44,7 @@ class AddContactActivity : AppCompatActivity() {
             val name = editTextName.text.toString().trim()
             val email = editTextEmail.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
+            val relation = editTextRelation.text.toString().trim()
 
             if (name.isEmpty() || email.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(this, "All fields required", Toast.LENGTH_SHORT).show()
@@ -55,7 +56,7 @@ class AddContactActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val contact = Contact(contactId, name, email, phone, username)
+            val contact = Contact(contactId, name, email, phone, relation, username)
             val success = if (contactId == -1) db.insertContact(contact) else db.updateContact(contact)
 
             if (success) {
@@ -65,10 +66,5 @@ class AddContactActivity : AppCompatActivity() {
                 Toast.makeText(this, "Save failed (maybe duplicate email)", Toast.LENGTH_SHORT).show()
             }
         }
-        btnCancel.setOnClickListener {
-            Toast.makeText(this, "No changes made.", Toast.LENGTH_SHORT).show()
-            finish()
-        }
-
     }
 }
