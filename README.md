@@ -1,4 +1,4 @@
-# Personal Healthcare Maintenance App (Android)
+# Personal Healthcare Monitoring App (Android)
 ## はじめに
 ・本レポジトリは、Android用のヘルスケアアプリを開発するプロジェクトに関するものです。　　
 
