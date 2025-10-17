@@ -1,16 +1,5 @@
 # Personal Healthcare Monitoring App (Android)
-## はじめに
-・本レポジトリは、Android用のヘルスケアアプリを開発するプロジェクトに関するものです。　　
 
-・4名のチームで約3ヶ月間にわたり開発しました。
+This project also has a Japanese version of the README. Please check [README.ja.md](README.ja.md) for details in Japanese.
 
-## コンセプト
-・
-・
 
-## アプリ概要
-## デモ動画
-## 環境
-## 利用方法
-## 実装予定の機能
-## 終わりに
