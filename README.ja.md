@@ -1,5 +1,5 @@
 # ヘルスケア管理システム (Android)
-### 日本語版(Japanese Version) 
+#### 日本語版(Japanese Version)  著： Maria Kato
 このプロジェクトの英語版READMEもあります。英語のREADMEは[README.md](README.md)で確認できます。
 ## はじめに
 ・本レポジトリは、Android用のヘルスケアアプリを開発するプロジェクトに関するものです。　　
