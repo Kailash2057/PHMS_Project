@@ -22,7 +22,7 @@
 - データ管理（医療機関や薬などの情報の追加）
 ## デモ動画
 ## 開発環境
-- **開発言語**: Java 
+- **開発言語**: Java 21.0.2
 - **IDE**: Android Studio
 - **想定環境**: Android 11.0 以降、最低2GBのRAMを搭載したモバイルデバイス
 - **Version Control**: Git
