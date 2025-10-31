@@ -21,6 +21,7 @@
 - **Medication**: 毎日の服薬
 - データ管理（医療機関や薬などの情報の追加）
 ## デモ動画
+https://github.com/user-attachments/assets/39ff31ab-fee9-4046-8bb0-9daf587fe974
 ## 開発環境
 - **開発言語**: Java 21.0.2
 - **IDE**: Android Studio
