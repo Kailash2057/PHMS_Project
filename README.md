@@ -30,7 +30,9 @@ The development environment for this project includes the following tools and te
 - **Version Control**: Git
 
 ## Team member
-・ Maria Kato Github: 
+・ Maria Kato 
+
+Github: https://github.com/mariakato
 
 ・ Kailash Adhikari
 
