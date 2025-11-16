@@ -28,3 +28,12 @@ The development environment for this project includes the following tools and te
 - **Programming Language**: Java
 - **Framework**: 
 - **Version Control**: Git
+
+## Team member
+・ Maria Kato Github: 
+
+・ Kailash Adhikari
+
+・ Samiksha Rijal
+
+・ Yuma Fukazawa
