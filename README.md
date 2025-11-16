@@ -21,7 +21,7 @@ The following functionalities are available in the app.
 ・ Notes  
 
 ## Demo video
-
+https://github.com/user-attachments/assets/39ff31ab-fee9-4046-8bb0-9daf587fe974
 ## Development Environment
 The development environment for this project includes the following tools and technologies:
 - **IDE**: 
