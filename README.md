@@ -25,8 +25,9 @@ https://github.com/user-attachments/assets/39ff31ab-fee9-4046-8bb0-9daf587fe974
 ## Development Environment
 The development environment for this project includes the following tools and technologies:
 - **IDE**: Android Studio
-- **Programming Language**: Java
-- **Framework**: 
+- **Programming Language**: Java 
+- **Framework**: Android SDK
+- **Libraries**: AndroidX 
 - **Version Control**: Git
 
 ## Team member
