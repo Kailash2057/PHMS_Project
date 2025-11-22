@@ -27,6 +27,8 @@ https://github.com/user-attachments/assets/39ff31ab-fee9-4046-8bb0-9daf587fe974
 - **開発言語**: Java 21.0.2
 - **IDE**: Android Studio
 - **想定環境**: Android 11.0 以降、最低2GBのRAMを搭載したモバイルデバイス
+- **フレームワーク**: Android SDK
+- **ライブラリ**：Android X
 - **Version Control**: Git
 ## 利用方法
 初めてアプリを利用する場合は会員登録を行い、その後ログインします。ログインすることで各項目のデータが記録されます。
